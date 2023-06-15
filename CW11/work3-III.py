@@ -10,4 +10,5 @@ args = parser.parse_args()
 date_format = datetime.strptime(args.date, args.input_format)
 string_format = date_format.strftime(args.output_format)
 
+
 print(string_format)
