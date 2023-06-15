@@ -8,6 +8,6 @@ parser.add_argument("--output-format", type=str, required=True)
 
 args = parser.parse_args()
 date_format = datetime.strptime(args.date, args.input_format)
-string_format = datetime.strptime(args.output_format)
+string_format = date_format.strftime(args.output_format)
 
-print("\033[0;31m"f"{string_format}""\033[0m")
+print(string_format)
