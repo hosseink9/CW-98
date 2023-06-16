@@ -22,3 +22,8 @@ SELECT * FROM film WHERE rental_duration > 2 AND  rental_duration < 5 ORDER BY r
 
 SELECT * FROM film WHERE rental_duration > 2 AND  rental_duration < 5 ORDER BY last_update ASC;
 SELECT * FROM film WHERE rental_duration > 2 AND  rental_duration < 5 ORDER BY last_update DESC;
+
+--part4
+SELECT MIN(length) FROM film;
+SELECT MAX(length) FROM film;
+SELECT AVG(length) FROM film;
