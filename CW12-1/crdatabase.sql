@@ -46,3 +46,7 @@ VALUES (1, 'Farzam', '1992-08-14', false),
 
 --part f
 DELETE FROM students WHERE student_name = 'Mohammad';
+
+UPDATE students SET student_name='Feri'
+WHERE student_name='Farzam';
+
