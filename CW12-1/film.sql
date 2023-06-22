@@ -15,3 +15,10 @@ INNER JOIN film_category ON film_category.film_id=film.film_id
 INNER JOIN category ON category.category_id = film_category.category_id 
 GROUP BY category;
 
+--part 4
+SELECT category,count(*) FROM film
+INNER JOIN film_category ON film_category.film_id=film.film_id
+INNER JOIN category ON category.category_id = film_category.category_id 
+GROUP BY category HAVING count(*) BETWEEN '60' AND '68' ;
+
+
