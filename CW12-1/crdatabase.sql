@@ -50,3 +50,11 @@ DELETE FROM students WHERE student_name = 'Mohammad';
 UPDATE students SET student_name='Feri'
 WHERE student_name='Farzam';
 
+--part g
+ALTER TABLE students
+ADD phone INT;
+
+DROP TABLE students;
+
+ALTER TABLE students
+RENAME TO fake_students;
