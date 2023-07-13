@@ -1,13 +1,17 @@
 from django.db import models
 
-#Category Model: Fields: name, description, and any other relevant information.
-# o Comment Model: Fields: post, author, content, date, and any other relevant information.
-
 class Post(models.Model):
-    title=models.CharField(max_length=255,null=True)
-    content=models.CharField(max_length=255,null=True)
-    author=models.CharField(max_length=255,null=True)
-    publication_date=models.DateField(auto_now_add=True)
+    title=models.CharField(max_length=255,null=False)
+    content=models.CharField(max_length=255,null=False)
+    author=models.CharField(max_length=255,null=False)
+    publication_date=models.DateField(auto_now_add=False)
 
 class Category(models.Model):
     name=models.CharField(max_length=255,)
+    description=models.TextField()
+
+class Comment(models.Model):
+    post=models.CharField(max_length=255)
+    author=models.CharField(max_length=255,null=False)
+    content=models.CharField(max_length=255)
+    date=models.DateField(auto_now_add=False)
