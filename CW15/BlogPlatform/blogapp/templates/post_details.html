@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-        <h1 class="mb-4">Post Details</h1>
-        <div class="row">
-                <div class="col-md-6">
-                    <div class="card mb-3">
+<body style="background-color: grey;">
+    <br>
+    <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mb-3">
                         {% if post.image %}
                             <img src="{{ post.image.url }}" class="img-fluid rounded-start  img-fluid" alt="{{ post.name }}" style="height: 20rem; width: 40rem; object-fit: cover; ">
                         {% endif%}
@@ -29,13 +29,15 @@
                             {% endif %}
                             <br>
                             <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 5rem" data-sb-validations="required"></textarea>
-                            <!-- <label for="message">Message</label> -->
                             <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                            <br>
+                            <div class="row justify-content-center"> 
+                            <button type="button" class="btn btn-primary btn-sm">Add</button>
+                            </div>
                             <br>
                         </div>
                     </div>
                 </div>
-                
-            </div>
     </div>
+</body>
 {% endblock %}

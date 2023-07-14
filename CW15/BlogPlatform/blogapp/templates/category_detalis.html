@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-        <h1 class="mb-4">Category Details</h1>
-        <div class="row">
+<div style="background-color: gray;">
+    <br>
+<div class="row justify-content-center">
+    <h1>Category Details</h1>
+</div>
+
+<div class="row justify-content-center" style="background-color: gray;">
                 <div class="col-md-6">
                     <div class="card mb-3">
                         {% if category.image %}
@@ -15,21 +19,27 @@
                             <p class="card-text">{{ category.description }}</p>
                         </div>
                     </div>
+                    <br>
+                    <h2 class="mt-4">Posts about {{ category.name }}</h2>
                 </div>
-        </div>
-        <h2 class="mt-4">Posts by {{ category.name }}</h2>
         {% if posts %}
             <ul class="list-group">
                 {% for post in posts %}
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" class="img-fluid rounded-start  img-fluid" alt="{{ post.name }}" style="height: 20rem; width: 40rem; object-fit: cover; ">
+                        <br>
+                    {% endif%}
                     <li class="list-group-item">Author: {{ post.author }}</li>
                     <li class="list-group-item">Subject: {{ post.title }}</li>
                     <li class="list-group-item">Content: {{ post.content }}</li>
                     <li class="list-group-item">Publication Date: {{ post.publication_date }}</li>
+                    <br>
                     <br>
                 {% endfor %}
             </ul>
         {% else %}
             <p>No posts found for this author.</p>
         {% endif %}
+    </div>
     </div>
 {% endblock %}

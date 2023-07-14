@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
+<body style="background-color: grey;">
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card mb-3">
+        {% if author.image %}
+            <img src="{{ author.image.url }}" class="img-fluid rounded-start  img-fluid" alt="{{ author.name }}" style="height: 20rem; width: 40rem; object-fit: cover; ">
+        {% endif%}
         <div class="card">
-            {% if author.image %}
-                <img src="{{ author.image.url }}" class="img-fluid rounded-start  img-fluid" alt="{{ author.name }}" style="height: 20rem; width: 40rem;object-fit: cover; ">
-            {% endif%}
             <div class="card-body">
                 <h1 class="card-title">{{ author.name }}</h1>
                 <p class="card-text">{{ author.bio }}</p>
@@ -20,9 +24,13 @@
                     <li class="list-group-item">{{ post.content }}</li>
                     <li class="list-group-item">{{ post.publication_date }}</li>
                 {% endfor %}
+                
             </ul>
         {% else %}
             <p>No posts found for this author.</p>
         {% endif %}
     </div>
+    </div>
+    </div>
+    </body>
 {% endblock %}

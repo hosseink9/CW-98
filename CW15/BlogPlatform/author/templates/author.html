@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-        <h1 class="mb-4">All Authors</h1>
+<body style="background-color: grey;">
+    <br>
+<div class="container">
+        <h1 class="mb-4" style="color: azure;">All Authors</h1>
         <div class="row">
             {% for author in authors %}
             <div class="col-md-3">
@@ -18,4 +20,5 @@
             {% endfor %}
         </div>
     </div>
+    </body>
 {% endblock %}
