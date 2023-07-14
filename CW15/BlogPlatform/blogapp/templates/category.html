@@ -5,8 +5,11 @@
         <h1 class="mb-4">All Categorys</h1>
         <div class="row">
             {% for category in categorys %}
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="card mb-3">
+                        {% if category.image %}
+                            <img src="{{ category.image.url }}" class="img-fluid rounded-start  img-fluid" alt="{{ category.name }}" style="height: 20rem; width: 40rem; object-fit: cover; ">
+                        {% endif%}
                         <div class="card-body">
                             <a class="card-title" href="{%url 'category_details' category.pk %}">{{ category.name }}<a>
                         </div>

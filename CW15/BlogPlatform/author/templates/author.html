@@ -5,9 +5,12 @@
         <h1 class="mb-4">All Authors</h1>
         <div class="row">
             {% for author in authors %}
-                <div class="col-md-6">
-                    <div class="card mb-3">
-                        <div class="card-body">
+            <div class="col-md-3">
+                <div class="card mb-3" >
+                    {% if author.image %}
+                        <img src="{{ author.image.url }}" class="img-fluid rounded-start  img-fluid" alt="{{ author.name }}" style="height: 20rem; width: 40rem; object-fit: cover; ">
+                    {% endif%}
+                    <div class="card-body">
                             <a class="card-title" href="{%url 'author_details' author.pk %}">{{ author.name }}<a>
                         </div>
                     </div>

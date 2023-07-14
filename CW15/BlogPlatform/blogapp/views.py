@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post, Category
+from .models import Post, Category, Comment
 
 def home(request):
     return render(request,'home.html')
@@ -11,7 +11,8 @@ def all_post(request):
 
 def post_details(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, "post_details.html", {"post": post})
+    comments=Comment.objects.filter(post=post)
+    return render(request, "post_details.html", {"post": post,"comments":comments})
 
 
 def all_category(request):
@@ -21,4 +22,5 @@ def all_category(request):
 
 def category_details(request, pk):
     category = get_object_or_404(Category, pk=pk)
-    return render(request, "category_detalis.html", {"category": category})
+    posts=Post.objects.filter(category=category)
+    return render(request, "category_detalis.html", {"category": category,"posts":posts})
