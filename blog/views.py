@@ -3,14 +3,18 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post, Category, Comment
 from users.models import Author
 from django.http import HttpResponse
-
+from itertools import chain
 
 # Create your views here.
 
 
 def home(request):
-    context = {}
-    return render(request, 'index.html', context)
+    if request.method == "GET":
+        searched = request.GET.get('searched')
+        posts=Post.objects.filter(title__contains=searched)
+        return render(request, "index.html", {'searched':searched, 'posts': posts})
+    else:
+        return render(request, "index.html", {})
 
 
 def post_list(request):
@@ -34,3 +38,13 @@ def category_list(request):
 def category_details(request, pk):
     category = Category.objects.get(id=pk)
     return render(request, "Blog/category_details.html", {"category": category })
+
+# def search_details(request):
+#         if request.method == "GET":
+#             searched = request.GET.get('searched')
+#             posts=list(set(chain( Post.objects.filter(title__contains=searched),
+#                            Post.objects.filter(content__contains=searched))))
+#             return render(request, "home.html", {'searched':searched, 'posts': posts})
+        
+#         else:
+#              return render(request, "home.html", {})

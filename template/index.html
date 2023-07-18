@@ -1,7 +1,24 @@
-{%extends 'base.html'%}
- {% block title%}
-        <title>Maktab Blog </title>
-{%endblock title%}
-{% block content%}
+{% extends 'base.html' %}
 
-{% endblock content%}
+{% block content %}
+
+    <body style="background-color: cadetblue;">
+        <center >
+        {% if searched %}
+            <h1 style="color: #e3f2fd;"> You search for {{ searched }}</h1>
+            <br/>
+            
+        {% for post in posts %}
+        <br>
+        <a class="card-title" href="{%url 'post_list' %}" style="background-color: #e3f2fd; padding: 10px;">{{ post }} - {{ post.content }}</a>
+        <br/>
+        {% endfor %}
+        
+        {% else %}
+        <h1>
+            you forget search for posts!!
+        </h1>
+        {% endif %}
+    </center>
+</body>
+{% endblock content %}

@@ -35,9 +35,11 @@
 
       </ul>
 <!-- Search bar -->
-      <form class="d-flex" >
-
-      </form>
+    <form class="d-flex" role="search" method="GET" action="{% url 'home' %}">
+        <input class="form-control me-2" type="search" placeholder="Search posts" aria-label="Search"
+        name="searched" style="margin-right: 10px;">
+        <button class="btn btn-info" type="submit" >Search</button>
+    </form>
     </div>
   </div>
 </nav>
