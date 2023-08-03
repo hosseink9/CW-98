@@ -8,7 +8,6 @@ class Category(models.Model):
     description=models.TextField()
     image=models.ImageField(upload_to='category_images/',blank=True,null=True)
 
-
     def __str__(self) -> str:
         return self.name
 

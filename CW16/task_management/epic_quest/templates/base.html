@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>Home</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;" >    
+        <a class="navbar-brand" href="{% url 'home' %}">Task Management 
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 2048 2048"><path fill="currentColor" d="M768 256h1280v128H768V256zm0 768V896h1280v128H768zm0 640v-128h1280v128H768zM256 768q53 0 99 20t82 55t55 81t20 100q0 53-20 99t-55 82t-81 55t-100 20q-53 0-99-20t-82-55t-55-81t-20-100q0-53 20-99t55-82t81-55t100-20zm0 400q30 0 56-11t45-31t31-46t12-56q0-30-11-56t-31-45t-46-31t-56-12q-30 0-56 11t-45 31t-31 46t-12 56q0 30 11 56t31 45t46 31t56 12zm0 240q53 0 99 20t82 55t55 81t20 100q0 53-20 99t-55 82t-81 55t-100 20q-53 0-99-20t-82-55t-55-81t-20-100q0-53 20-99t55-82t81-55t100-20zm0 400q30 0 56-11t45-31t31-46t12-56q0-30-11-56t-31-45t-46-31t-56-12q-30 0-56 11t-45 31t-31 46t-12 56q0 30 11 56t31 45t46 31t56 12zM192 358L467 83l90 90l-365 365L19 365l90-90l83 83z"/></svg>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav" >
+            <li class="nav-item active" >
+              <a class="nav-link" href="{% url 'home' %}">Home 
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30"><path fill="currentColor" d="M20 10a1 1 0 1 0-2 0h2ZM6 10a1 1 0 0 0-2 0h2Zm14.293 2.707a1 1 0 0 0 1.414-1.414l-1.414 1.414ZM12 3l.707-.707a1 1 0 0 0-1.414 0L12 3Zm-9.707 8.293a1 1 0 1 0 1.414 1.414l-1.414-1.414ZM7 22h10v-2H7v2Zm13-3v-9h-2v9h2ZM6 19v-9H4v9h2Zm15.707-7.707l-9-9l-1.414 1.414l9 9l1.414-1.414Zm-10.414-9l-9 9l1.414 1.414l9-9l-1.414-1.414ZM17 22a3 3 0 0 0 3-3h-2a1 1 0 0 1-1 1v2ZM7 20a1 1 0 0 1-1-1H4a3 3 0 0 0 3 3v-2Z"/></svg>
+              </a>
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link" href="{% url 'view_all' %}">View all
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 580 580"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 0 0-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 0 0 0-17.47C428.89 172.28 347.8 112 255.66 112Z"/><circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'search' %}">Search 
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="30" viewBox="0 0 30 30"><path fill="currentColor" d="M4 18h16c1.1 0 1.99-.9 1.99-2L22 5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2zM4 5h16v11H4V5zM1 19h22v2H1z"/><path fill="currentColor" d="M13.97 7.53c-1.37-1.37-3.58-1.37-4.95 0s-1.37 3.58 0 4.95c1.18 1.18 3 1.34 4.36.47l2.09 2.09l1.06-1.06l-2.09-2.09c.87-1.36.72-3.18-.47-4.36zm-1.06 3.88c-.78.78-2.05.78-2.83 0c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.78.79.78 2.05 0 2.83z"/></svg>
+              </a>
+            </li>
+            
+          </div>
+          </ul>
+        </div>
+      </nav>
+    {% block content %}
+    {% endblock content %}
+
+</body>
+</html>

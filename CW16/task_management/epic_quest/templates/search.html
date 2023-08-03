@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- <body style="background-color: cadetblue;">
+    <br>
+    <br>
+    <br>
+    <div class="row justify-content-center" >
+    <div class="col-md-4 ">
+            <div class="card mb-3" style="background-color: #e3f2fd ; padding: 20px;">
+                <div class="row justify-content-center">
+                <svg style="color: #007bff;" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 25 25">
+                    <path fill="currentColor" d="M4 18h16c1.1 0 1.99-.9 1.99-2L22 5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2zM4 5h16v11H4V5zM1 19h22v2H1z"/>
+                    <path fill="currentColor" d="M13.97 7.53c-1.37-1.37-3.58-1.37-4.95 0s-1.37 3.58 0 4.95c1.18 1.18 3 1.34 4.36.47l2.09 2.09l1.06-1.06l-2.09-2.09c.87-1.36.72-3.18-.47-4.36zm-1.06 3.88c-.78.78-2.05.78-2.83 0c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.78.79.78 2.05 0 2.83z" style="color: #007bff;"/>
+                </svg>
+            </div>
+                <br>
+            <form class="d-flex" role="search" method="GET" action="{% url 'search_details' %}">
+                <input class="form-control me-2" type="search" placeholder="Search Tasks" aria-label="Search"
+                name="searched" style="margin-right: 10px;">
+                <button class="btn btn-info" type="submit" >Search</button>
+            </form>
+            </div>
+            </div>
+        
+    </div>
+    </body> -->
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="pigga.css">
+
+        <section id="book-table" class="bg-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <form>
+                        <div class="form-group">
+                         <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email address">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Book A Table</button>
+                        <small class="form-text text-muted mt-3">We don't span customers. Check our <a href="#">Privacy Policy</a></small>
+                        <img class="container row justify-content-center" src="phone.jpg" alt="hi" class="w-100 rounded shadow">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</head>
+    {% endblock content %}
+    
+    

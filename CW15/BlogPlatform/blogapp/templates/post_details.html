@@ -12,7 +12,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ post.title }}</h5>
                             <p class="card-text">{{ post.content }}</p>
-                            <p class="card-text">Author: {{ post.author }}</p>
+                            <!-- <p class="card-text">Author: {{ post.author }}</p> -->
+                            <a class="card-title" href="{%url 'author_details' post.pk %}">{{ post.author }}<a>
                             <p class="card-text">Publication Date: {{ post.publication_date }}</p>
             
                             

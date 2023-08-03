@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body style="background-color: cadetblue;">
+    <br>
+    <div class="container">
+        <h1 class="mb-4 text-center" style="color: #e3f2fd;">All Tasks</h1>
+        <div class="container">
+        <form class="row justify-content-end" role="search" method="GET" action="{% url 'all_category' %}">
+            <button class="btn btn-primary " type="submit" >Category</button>
+        </form>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Sorting by Due Date
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+            {% for task in task_list %}
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <a class="card-title" href="{%url 'task_details' task.pk %}" style="font-size: larger;">{{ task.title }}<a>
+                        </div>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">Description: {{ task.description }}</li>
+                        <li class="list-group-item">Status field: {{ task.status_fields }}</li>
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <br/></br/>
+            <div class="row justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+
+                    {% if task_list.has_previous %}
+                  <li class="page-item"><a class="page-link" href="?page={{ task_list.previous_page_number}}">Previous</a></li>
+                  {% endif %}
+                  <li class="page-item"> <p class="page-link">Pages {{ task_list.number }} of {{ task_list.paginator.num_pages }}</p></li>
+                  
+                  {% if task_list.has_next %}
+                  <li class="page-item"><a class="page-link" href="?page={{ task_list.next_page_number}}">Next</a></li>
+                  {% endif %}
+                  
+                </ul>
+              </nav>
+            </div>
+        </div>
+    </body>
+        {% endblock %}
+        

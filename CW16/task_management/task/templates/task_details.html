@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body style="background-color: cadetblue;">
+    <br>
+    <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card mb-3">
+        <!-- {% if author.image %}
+            <img src="{{ author.image.url }}" class="img-fluid rounded-start  img-fluid" alt="{{ author.name }}" style="height: 20rem; width: 40rem; object-fit: cover; ">
+        {% endif%} -->
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title row justify-content-center">{{ task.title }}</h1>
+            </div>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item">Description: {{ task.description }}</li>
+            <li class="list-group-item">Due Date: {{ task.due_date }}</li>
+            <li class="list-group-item">Category: {{ task.category }}</li>
+            <li class="list-group-item">Status Field: {{ task.status_fields }}</li>
+            <li class="list-group-item">Tag:
+                {% for tag in task.tag.all %}
+                    {{ tag }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <h3 class="text-center">Recently Viewed</h3>
+            {% for recent_task in recently_viewed_tasks %}
+            <h4 class="text-center">{{ recent_task.title }}</h4>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    </div>
+    </body>
+{% endblock %}
