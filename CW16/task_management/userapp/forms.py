@@ -13,3 +13,4 @@ class UserForm(ModelForm):
         confirm_password = cleaned_data.get("confirm_password")
         if password != confirm_password:
             raise ValidationError("password and confirm_password does not match")
+        return cleaned_data
