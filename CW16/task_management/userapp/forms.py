@@ -1,11 +1,13 @@
 from django.forms import ModelForm,PasswordInput,CharField, ValidationError
-from models import *
+from django import forms
+from .models import *
 
 class UserForm(ModelForm):
     confirm_password=CharField(widget=PasswordInput)
+    password=CharField(max_length=30,widget=PasswordInput)
     class Meta:
         model=User
-        fields=('username','password','email')
+        fields=('username','email','password')
 
     def clean(self):
         cleaned_data = super(UserForm, self).clean()
@@ -15,7 +17,6 @@ class UserForm(ModelForm):
             raise ValidationError("password and confirm_password does not match")
         return cleaned_data
     
-class UserLoginForm(ModelForm):
-    class Meta:
-        model=User
-        fields=('username','password')
+class UserLoginForm(forms.Form):
+    username=forms.CharField(max_length=30)
+    password=forms.CharField(max_length=30,widget=PasswordInput)
