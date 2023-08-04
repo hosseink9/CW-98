@@ -2,32 +2,49 @@ from django.shortcuts import render, get_object_or_404,redirect
 from django.db.models import Q
 from .models import Category, Tag
 from task.models import Task
-from itertools import chain
+from .forms import CategoryForm,TagForm
+from task.forms import TaskForm 
 from django.core.paginator import Paginator
 
 def home(request):
+        # if request.method == "POST":
+        #         title = request.POST['title']
+        #         description = request.POST['description']
+        #         due_date = request.POST['due_date']
+        #         category_name = request.POST['category']
+        #         # category = Category.objects.all()
+        #         status_fields = request.POST['status_fields']
+        #         tag_name = request.POST['tag']
+        #         # tag = Tag.objects.all()
+        #         add_task=Task(name=title,description=description,due_date=due_date,category=category_name,status_fields=status_fields,tag=tag_name)
+        #         add_task.save()
+        #         # print(title,description,due_date,category,status_fields,
+        #         return redirect("all_category")
+        # elif request.method == "GET":
+        #         tasks = Task.objects.all()
+        #         pagintion=Paginator(Task.objects.all(), 2)
+        #         page = request.GET.get('page')
+        #         task_list=pagintion.get_page(page)
+        #         categorys=Category.objects.all()
+        #         status={item[0]:item[1] for item in Task.status_choice}
+        #         tags=Tag.objects.all()
+        # return render(request, "home.html", {"tasks": tasks,'task_list':task_list,'categorys':categorys,'status':status,'tags':tags})
         if request.method == "POST":
-                title = request.POST['title']
-                description = request.POST['description']
-                due_date = request.POST['due_date']
-                category_name = request.POST['category']
-                # category = Category.objects.all()
-                status_fields = request.POST['status_fields']
-                tag_name = request.POST['tag']
-                # tag = Tag.objects.all()
-                add_task=Task(name=title,description=description,due_date=due_date,category=category_name,status_fields=status_fields,tag=tag_name)
-                add_task.save()
-                # print(title,description,due_date,category,status_fields,
-                return redirect("all_category")
-        elif request.method == "GET":
-                tasks = Task.objects.all()
-                pagintion=Paginator(Task.objects.all(), 2)
-                page = request.GET.get('page')
-                task_list=pagintion.get_page(page)
-                categorys=Category.objects.all()
-                status={item[0]:item[1] for item in Task.status_choice}
-                tags=Tag.objects.all()
-        return render(request, "home.html", {"tasks": tasks,'task_list':task_list,'categorys':categorys,'status':status,'tags':tags})
+            form=TaskForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('all_category')
+        else:
+            form = TaskForm()
+            tasks = Task.objects.all()
+            pagintion=Paginator(Task.objects.all(), 2)
+            page = request.GET.get('page')
+            task_list=pagintion.get_page(page)
+            categorys=Category.objects.all()
+            status={item[0]:item[1] for item in Task.status_choice}
+            tags=Tag.objects.all()
+        return render(request, "home.html", {"tasks": tasks,'task_list':task_list,'categorys':categorys,'status':status,'tags':tags,'form':form})
+        # return render(request, "category.html",{"categorys": categorys,"tasks": tasks,'form':form})
 
 def view_all(request):
         tasks = Task.objects.order_by('due_date')
@@ -43,15 +60,17 @@ def search(request):
 
 def all_category(request):
         if request.method == "POST":
-                title = request.POST['title']
-                description = request.POST['description']
-                add_category=Category(name=title,description=description)
-                add_category.save()
-                return redirect("all_category")
-        elif request.method == "GET":
-                categorys = Category.objects.all()
-                tasks = Task.objects.all()
-                return render(request, "category.html",{"categorys": categorys,"tasks": tasks})
+            form=CategoryForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('all_category')
+        else:
+            form = CategoryForm()
+            categorys = Category.objects.all()
+            tasks = Task.objects.all()
+        return render(request, "category.html",{"categorys": categorys,"tasks": tasks,'form':form})
+
+        # elif request.method == "GET":
 
 def category_details(request, pk):
     category = get_object_or_404(Category, pk=pk)
