@@ -14,3 +14,7 @@ class UserForm(ModelForm):
         if password != confirm_password:
             raise ValidationError("password and confirm_password does not match")
         return cleaned_data
+    
+class UserLogin(ModelForm):
+    class Meta:
+        

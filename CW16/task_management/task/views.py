@@ -17,7 +17,10 @@ def task_details(request, pk):
             request.session['recently_viewed'].remove(pk)
 
         tasks = Task.objects.filter(pk__in = request.session['recently_viewed'])
+        print(tasks)
+        print(request.session['recently_viewed'])
         recently_viewed_tasks = sorted(tasks,key = lambda x: request.session['recently_viewed'].index(x.pk))
+        print(recently_viewed_tasks)
         request.session['recently_viewed'].insert(0, pk)
         if len(request.session['recently_viewed']) > 5:
             request.session['recently_viewed'].pop()
