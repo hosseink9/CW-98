@@ -5,7 +5,7 @@
     <br>
     <div class="container">
         <h1 class="mb-4 text-center" style="color: #e3f2fd;">All Tasks</h1>
-        <form class="container col-md-6 d-flex" method="POST" action="{% url 'home' %}">
+        <!-- <form class="container col-md-6 d-flex" method="POST" action="{% url 'home' %}">
             {% csrf_token %}
             <input class="col-md-2" placeholder="Title" 
             name="title" style="margin-right: 10px;" required>
@@ -30,7 +30,14 @@
             {% endfor %}
             </select>
             <button class="btn btn-info" type="submit" >Sumbit</button>
-        </form>
+        </form> -->
+        <form class="container" method="POST" action="{% url 'all_category' %}">
+            {% csrf_token %}
+            <br>
+              <div class="mb-3">
+                {{ form.as_p }}
+              <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+          </form>
         <br>
         <div class="row">
             {% for task in task_list %}
