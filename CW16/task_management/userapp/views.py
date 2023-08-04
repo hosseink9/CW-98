@@ -5,13 +5,13 @@ from .auth import AuthBackend
 from django.contrib.auth import login,authenticate
 
 def userlogin(request):
-    if request.method["POST"]:
+    if request.method=="POST":
         form=UserLoginForm(request.POST)
         if form.is_valid():
             clean_d=form.cleaned_data
             username=clean_d['username']
             password=clean_d['password']
-            user=AuthBackend.authenticate(username=username,password=password)
+            user=authenticate(request,username=username,password=password)
             if user:
                 login(request,user)
                 return redirect('home')
@@ -19,4 +19,14 @@ def userlogin(request):
                 form.add_error(None,"your input is invalid")
     else:
         form = UserLoginForm()
-    return render(request,'epic_quest/login.html',{'form':form})
+    return render(request,'login.html',{'form':form})
+
+def usersignup(request):
+    if request.method == "POST":
+        form=UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = UserForm()
+    return render(request,'signup.html',{'form':form})
