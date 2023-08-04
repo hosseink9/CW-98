@@ -7,14 +7,13 @@
         <div>
             <h1 class="mb-4 row justify-content-center" style="color: #e3f2fd;">All Categorys</h1>
         </div>
-        <form class="d-flex" method="POST" action="{% url 'all_category' %}">
+        <form class="container" method="POST" action="{% url 'all_category' %}">
             {% csrf_token %}
-            <input class="col-md-3" placeholder="Title" 
-            name="title" style="margin-right: 10px;" required>
-            <input class="col-md-3" placeholder="Description" 
-            name="description" style="margin-right: 10px;" required>
-            <button class="btn btn-info" type="submit" >Sumbit</button>
-        </form>
+            <br>
+              <div class="mb-3">
+                {{ form.as_p }}
+              <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+          </form>
         <br>
         <div class="row">
             {% for category in categorys %}
