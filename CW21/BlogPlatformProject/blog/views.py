@@ -7,7 +7,7 @@ from .forms import PostCreationForm, CommentUpdateForm, CommentCreationForm
 from django.http import HttpResponse
 from django.views.generic import DetailView, UpdateView
 from django.urls import reverse_lazy
-
+from django.views.generic.edit import UpdateView
 
 # Create your views here.
 
@@ -44,21 +44,27 @@ def post_details(request, pk):
     return render(request, "Blog/post.html", {"post": post, "comments": comments})
 
 
-def comment_update(request, pk):
-    comment = Comment.objects.get(id=pk)
-    if request.method == "POST":
-        form = CommentUpdateForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            comment.content = cd['content']
-            comment.save()
-            return redirect('post_details', comment.post.id)
-    else:
-        form = CommentUpdateForm(initial=
-                                 {'content': comment.content}
-                                 )
 
-    return render(request, 'Blog/comment_update.html', {'form': form, 'comm': comment})
+class CommentUpdateView(UpdateView):
+    model = Comment
+    fields = ['content']
+    template_name = 'Blog/comment_update.html'
+
+# def comment_update(request, pk):
+#     comment = Comment.objects.get(id=pk)
+#     if request.method == "POST":
+#         form = CommentUpdateForm(request.POST)
+#         if form.is_valid():
+#             cd = form.cleaned_data
+#             comment.content = cd['content']
+#             comment.save()
+#             return redirect('post_details', comment.post.id)
+#     else:
+#         form = CommentUpdateForm(initial=
+#                                  {'content': comment.content}
+#                                  )
+
+#     return render(request, 'Blog/comment_update.html', {'form': form, 'comm': comment})
 
 
 def category_list(request):
