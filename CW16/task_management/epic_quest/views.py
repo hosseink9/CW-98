@@ -69,21 +69,17 @@ def search(request):
 
 
 class AllView(CreateView):
-    template_name = CreateView
-    form_class = CategoryForm
-    context_object_name = "tasks", "form", "categorys"
-
     def all_category(request):
         if request.method == "POST":
             form = CategoryForm(request.POST)
             if form.is_valid():
                 form.save()
                 return redirect('all_category')
-        # else:
-        #     form = CategoryForm()
-        #     categorys = Category.objects.all()
-        #     tasks = Task.objects.all()
-        # return render(request, "category.html", {"categorys": categorys, "tasks": tasks, 'form': form})
+        else:
+            form = CategoryForm()
+            categorys = Category.objects.all()
+            tasks = Task.objects.all()
+        return render(request, "category.html", {"categorys": categorys, "tasks": tasks, 'form': form})
 
 
 def category_details(request, pk):
