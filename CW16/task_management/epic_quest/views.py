@@ -5,7 +5,7 @@ from task.models import Task
 from .forms import CategoryForm, TagForm
 from task.forms import TaskForm
 from django.core.paginator import Paginator
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 
 
 def home(request):
@@ -52,27 +52,38 @@ def home(request):
 class AllView(ListView):
     model = Task
     template_name = "view_all.html"
-    context_object_name = "tasks", "task_list"
+    context_object_name = "task_list"
     paginate_by = "2"
+    ordering = "due_date"
+
+    # def view_all(request):
+    #     tasks = Task.objects.order_by('due_date')
+    #     pagintion = Paginator(Task.objects.order_by('due_date'), 2)
+    #     page = request.GET.get('page')
+    #     task_list = pagintion.get_page(page)
+    #     return render(request, "view_all.html", {"tasks": tasks, 'task_list': task_list})
 
 
 def search(request):
     return render(request, 'search.html')
 
 
-def all_category(request):
-    if request.method == "POST":
-        form = CategoryForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('all_category')
-    else:
-        form = CategoryForm()
-        categorys = Category.objects.all()
-        tasks = Task.objects.all()
-    return render(request, "category.html", {"categorys": categorys, "tasks": tasks, 'form': form})
+class AllView(CreateView):
+    template_name = CreateView
+    form_class = CategoryForm
+    context_object_name = "tasks", "form", "categorys"
 
-    # elif request.method == "GET":
+    def all_category(request):
+        if request.method == "POST":
+            form = CategoryForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('all_category')
+        # else:
+        #     form = CategoryForm()
+        #     categorys = Category.objects.all()
+        #     tasks = Task.objects.all()
+        # return render(request, "category.html", {"categorys": categorys, "tasks": tasks, 'form': form})
 
 
 def category_details(request, pk):
