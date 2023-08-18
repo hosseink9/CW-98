@@ -38,6 +38,4 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'username'
 
     def img_preview(self):
-        return mark_safe('<img src = "{url}" width = "300"/>'.format(
-            url=self.photo.url
-        ))
+        return mark_safe(f'<img src = "{self.photo.url}" width = "300"/>')
