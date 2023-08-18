@@ -20,6 +20,7 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ["username", 'is_active',
                     'number_of_task', 'is_greate_user']
     list_filter = [AdminFilter]
+    readonly_fields = ['img_preview']
 
     @admin.display(ordering="username")
     def number_of_task(self, user):
