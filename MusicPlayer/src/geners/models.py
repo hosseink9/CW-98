@@ -1,5 +1,6 @@
 from django.db import models
 from artists.models import Artist
+from users.models import User
 
 
 class Gener(models.Model):
@@ -18,3 +19,10 @@ class Song(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+
+class Playlist(models.Model):
+    title = models.CharField(max_length=40)
+    description = models.TextField(blank=False,null=True)
+    owner = models.ForeignKey(User,on_delete=models.CASCADE)
+    songs = models.ManyToManyField(Song)
