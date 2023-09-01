@@ -14,7 +14,7 @@ class Comment(models.Model):
     song = models.ForeignKey(Song,on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return
+        return self.user
 
     def verify(self, admin:User):
         self.verify = admin
