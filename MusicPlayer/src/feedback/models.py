@@ -12,6 +12,8 @@ class Like(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     song = models.ForeignKey(Song,on_delete=models.CASCADE)
+    text = models.TextField(max_length=300)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
         return self.user
