@@ -26,3 +26,6 @@ class Playlist(models.Model):
     description = models.TextField(blank=False,null=True)
     owner = models.ForeignKey(User,on_delete=models.CASCADE)
     songs = models.ManyToManyField(Song)
+
+    def __str__(self) -> str:
+        return self.title
