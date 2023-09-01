@@ -56,13 +56,22 @@ class PhoneNumberField(models.CharField):
 
 
 class User(AbstractUser):
+    Normal='Normal'
+    Premium='Premium'
+    CHOICES = [
+        ('Normal',Normal),
+        ('Premium',Premium)
+    ]
+
     phone = PhoneNumberField(validators=[phone_validator], unique=True, max_length=20)
 
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
+    photo = models.ImageField(upload_to='images/users', blank=True ,null=True)
 
     is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
+
+    account = models.CharField(max_length=50, choices=CHOICES)
 
     objects = UserManager()
 
