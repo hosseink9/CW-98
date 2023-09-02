@@ -23,6 +23,7 @@ from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('geners.urls')),
+    path('users', include('users.urls'))
 
     ]
 
