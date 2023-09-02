@@ -1,0 +1,11 @@
+{% block content %}
+
+<form action="{% url 'users:signin' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" value="submit" class="btn btn-primary btn-block my-4 py-2">
+        <div class="h4">Signin</div>
+    </button>
+</form>
+
+{% endblock %}
