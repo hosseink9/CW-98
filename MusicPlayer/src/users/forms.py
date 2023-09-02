@@ -8,7 +8,7 @@ class UserSignin(ModelForm):
     password=CharField(max_length=30,widget=PasswordInput)
     class Meta:
         model=User
-        fields=('username','password','first_name','last_name','phone','account','photo')
+        fields=('username','first_name','last_name','phone','account','photo','password')
 
     def clean(self):
         cleaned_data = super(UserSignin, self).clean()
