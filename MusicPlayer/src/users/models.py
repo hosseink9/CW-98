@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.core.exceptions import ValidationError
+from main.models import BaseModel
 
 import re
 
@@ -55,7 +56,7 @@ class PhoneNumberField(models.CharField):
         return phone
 
 
-class User(AbstractUser):
+class User(AbstractUser, BaseModel):
     Normal='Normal'
     Premium='Premium'
     CHOICES = [
