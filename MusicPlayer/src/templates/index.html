@@ -10,19 +10,8 @@
 <body>
 
     {% for song in song_list %}
-    {{ song.title }}
+    <a href="{% url 'geners:song_detail' song.id %}">{{ song.title }}</a>
 
-    {% for artist in song.artist.all %}
-    {{ artist }}
-
-    {% endfor %}
-
-
-    {{song.geners}}
-    <audio controls>
-        <source src="{{ song.audio_file.url }}" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
     {% endfor %}
 
 </body>
