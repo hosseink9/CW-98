@@ -60,8 +60,8 @@ class User(AbstractUser, BaseModel):
     Normal='Normal'
     Premium='Premium'
     CHOICES = [
-        ('Normal',Normal),
-        ('Premium',Premium)
+        ('N',Normal),
+        ('P',Premium)
     ]
 
     phone = PhoneNumberField(validators=[phone_validator], unique=True, max_length=20)
