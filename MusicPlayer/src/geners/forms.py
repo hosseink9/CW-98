@@ -10,4 +10,4 @@ class UploadSongsForm(ModelForm):
 class PlaylistForm(ModelForm):
     class Meta:
         model = Playlist
-        fields = ('title','description','owner','songs',)
+        fields = ('title','description','songs',)
