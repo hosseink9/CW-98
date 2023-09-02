@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import FormView,ListView
+from django.views.generic import FormView,ListView,DetailView
 from geners.models import *
 
 
@@ -8,3 +8,8 @@ class ListAllSongs(ListView):
     model = Song
     context_object_name = 'song_list'
 
+
+class DesplaySongDetail(DetailView):
+    model = Song
+    template_name = 'song_detail.html'
+    context_object_name = 'song'
