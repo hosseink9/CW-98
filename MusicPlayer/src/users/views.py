@@ -37,14 +37,17 @@ class LoginView(FormView):
     def form_valid(self, form):
         cd = form.cleaned_data
         phone = str(cd['phone'])
-        password =(cd['password'])
-        # password = make_password(password)
+        password =cd['password']
         print(password)
-        user = User.objects.filter(phone=phone,password=password).first()
-        # user=authenticate(username=phone,password=password)
+        user = User.objects.filter(phone=phone).first()
         if user:
-            login(self.request,user,'users.auth.UserAuthBackend')
-            return super().form_valid(form)
+            print(user.check_password(password))
+            if user.check_password(password):
+                login(self.request,user,'users.auth.UserAuthBackend')
+                return super().form_valid(form)
+            else:
+                form.add_error("password", "Password incorrect")
+            return super().form_invalid(form)
         else:
             form.add_error("phone", "Phone number not found")
             return super().form_invalid(form)
