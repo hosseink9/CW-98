@@ -1,13 +1,9 @@
-from typing import Any, Dict
 from django.shortcuts import render,redirect
 from django.views.generic import FormView,CreateView
 from django.urls import reverse_lazy
-from django.contrib.auth import login, logout,authenticate
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.hashers import make_password
-from django.contrib.auth.hashers import PBKDF2PasswordHasher
 
-from .auth import UserAuthBackend
 from .models import User
 from .forms import *
 
@@ -21,6 +17,7 @@ class SignInView(CreateView):
         if isinstance(request.user, User):
             return redirect("geners:song_list")
         return super().dispatch(request, *args, **kwargs)
+
 
 
 class LoginView(FormView):
@@ -41,7 +38,6 @@ class LoginView(FormView):
         print(password)
         user = User.objects.filter(phone=phone).first()
         if user:
-            print(user.check_password(password))
             if user.check_password(password):
                 login(self.request,user,'users.auth.UserAuthBackend')
                 return super().form_valid(form)
