@@ -16,8 +16,6 @@ class UserSigninForm(ModelForm):
         confirm_password = cleaned_data.get("confirm_password")
         if password != confirm_password:
             raise ValidationError("password and confirm_password does not match")
-        # cleaned_data['password']=make_password('password')
-        # cleaned_data['password']=password
         return cleaned_data
 
     def save(self, commit=True):
@@ -36,11 +34,3 @@ class UserLoginForm(forms.Form):
         }))
     password=CharField(max_length=30,widget=PasswordInput)
 
-    # def clean(self):
-    #     cleaned_data = super(UserSigninForm, self).clean()
-    #     password = cleaned_data.get("password")
-    #     confirm_password = cleaned_data.get("confirm_password")
-    #     if password != confirm_password:
-    #         raise ValidationError("password and confirm_password does not match")
-    #     cleaned_data['password']=make_password('password')
-    #     return cleaned_data

@@ -52,4 +52,4 @@ class LoginView(FormView):
 @login_required
 def logout_user(request):
     logout(request)
-    return redirect("users:login")
+    return redirect("geners:song_list")

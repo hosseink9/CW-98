@@ -1,11 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
-<form action="{% url 'users:signin' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" value="submit" class="btn btn-primary btn-block my-4 py-2">
-        <div class="h4">Signin</div>
-    </button>
-</form>
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock link %}
+
+
+<div class="d-flex justify-content-center">
+    <section id="content">
+        <h2>Sign-In Form</h2>
+        <form id="contacts-form" action="{% url 'users:signin' %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <div class="field">
+                    <label>Username:</label>
+                    {{form.username}}
+                </div>
+                <div class="field">
+                    <label>First name:</label>
+                    {{form.first_name}}
+                </div>
+                <div class="field">
+                    <label>Last name:</label>
+                    {{form.last_name}}
+                </div>
+                <div class="field">
+                    <label>Phone:</label>
+                    {{form.phone}}
+                </div>
+                <div class="field">
+                    <label>Account:</label>
+                    {{form.account}}
+                </div>
+                <div class="field">
+                    <label>Photo:</label>
+                    {{form.photo}}
+                </div>
+                <div class="field">
+                    <label>Password:</label>
+                    {{form.password}}
+                </div>
+                <div class="field">
+                    <label>Confirm Password:</label>
+                    {{form.confirm_password}}
+                </div>
+                <button style="background-color: #da42e9;" type="submit"
+                    class="button btn bg-gradient my-2 ">Log-In</button>
+            </fieldset>
+        </form>
+    </section>
+    <div class="clear"></div>
+</div>
+</div>
+</div>
 
 {% endblock %}

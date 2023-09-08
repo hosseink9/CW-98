@@ -1,11 +1,33 @@
+{% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
-<form action="{% url 'users:login' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" value="submit" class="btn btn-primary btn-block my-4 py-2">
-        <div class="h4">LogIn</div>
-    </button>
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock link %}
+
+
+<div class="d-flex justify-content-center">
+    <section id="content">
+        <h2>Log-In Form</h2>
+        <form id="contacts-form" action="{% url 'users:login' %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <div class="field">
+                    <label>Phone:</label>
+                    {{form.phone}}
+                </div>
+                <div class="field">
+                    <label>Password:</label>
+                    {{form.password}}
+                </div>
+                <button style="background-color: #da42e9;" type="submit"
+                    class="button btn bg-gradient my-2 ">Log-In</button>
+</div>
+</fieldset>
 </form>
+</section>
+</div>
+<div class="clear"></div>
 
 {% endblock %}

@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block link %}
+
+    {% endblock link %}
+
+
+    <title>{% block title %}Music Beats{% endblock title %}</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <!--[if lt IE 7]>
+<link rel="stylesheet" href="css/ie6.css" type="text/css" media="screen">
+<script type="text/javascript" src="js/ie_png.js"></script>
+<script type="text/javascript">ie_png.fix('.png, header nav ul li, header nav ul li a, h1 a');</script>
+<![endif]-->
+    <!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
+</head>
+
+<body id="page1">
+    <!-- START PAGE SOURCE -->
+    <div class="wrap">
+        <header>
+            <div class="container">
+                <h1><a href="#">Music Beats</a></h1>
+                <nav>
+                    <ul>
+                        {% if request.user.is_authenticated%}
+                        <li class="m1"><a href="{%url 'geners:song_list' %}" class="active"><span>home</span></a></li>
+                        <li class="m2"><a href="{%url 'geners:geners' %}"><span>Geners</span></a></li>
+
+                        {% if request.user.account == 'P'%}
+                        <li class="m3"><a href="{%url 'geners:playlist' %}"><span>Playlist</span></a></li>
+                        {%endif%}
+
+                        <li class="m4 last"><a href="{%url 'users:logout' %}"><span>Log-out</span></a></li>
+
+
+                        {% else %}
+                        <li class="m1"><a href="{%url 'geners:song_list' %}" class="active"><span>home</span></a></li>
+                        <li class="m2"><a href="{%url 'geners:geners' %}"><span>Geners</span></a></li>
+                        <li class="m3"><a href="{%url 'users:login' %}"><span>Log-In</span></a></li>
+                        <li class="m4"><a href="{%url 'users:signin' %}"><span>Sign-In</span></a></li>
+                        {% endif %}
+
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+    <body class="body">
+
+        {% block content %}
+
+        {% endblock content %}
+    </body>
+
+    <footer>
+        <div class="container">
+            <!-- <div class="cont-bot"></div> -->
+            <div class="footerlink">
+                <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
+                <p class="rf">Design by <a href="http://www.templatemonster.com/">TemplateMonster</a></p>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </footer>
+    <!-- <script type="text/javascript"> Cufon.now(); </script> -->
+    <!-- END PAGE SOURCE -->
+    <script type="text/javascript" src="{% static 'js/jquery-1.4.2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/cufon-yui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/cufon-replace.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/ITC_Busorama_500.font.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    {% block footerlink %}
+
+    {% endblock footerlink %}
+
+</body>
+
+</html>

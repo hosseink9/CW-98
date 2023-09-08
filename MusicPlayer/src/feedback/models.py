@@ -8,7 +8,7 @@ class Like(BaseModel):
     song = models.ForeignKey(Song,on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return self.song
+        return f'{self.song.title} is like by {self.user.username}'
 
 class Comment(BaseModel):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -16,7 +16,7 @@ class Comment(BaseModel):
     text = models.TextField(max_length=300)
 
     def __str__(self) -> str:
-        return self.user
+        return f'{self.text} | {self.user.username}'
 
     def verify(self, admin:User):
         self.verify = admin

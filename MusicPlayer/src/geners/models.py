@@ -6,6 +6,8 @@ from main.models import BaseModel
 
 class Gener(BaseModel):
     name = models.CharField(max_length=50)
+    # gener_photo = models.ImageField(upload_to='images/gener_photo', null=True)
+
 
     def __str__(self):
         return self.name
