@@ -11,6 +11,52 @@ from django.http import HttpRequest, HttpResponse, JsonResponse
 from datetime import datetime
 
 
+
+# from django.contrib.auth import REDIRECT_FIELD_NAME
+# from typing import Any
+
+
+# class AuthenticateRequierd:
+
+#     def __init__(self, function,url_name='feedback:set'):
+#         self.function = function
+#         self.url_name=url_name
+
+
+#     def __call__(self,request) -> Any:
+#         # request = args[0]
+#         # print(request)
+#         # if args[0].user.is_authenticated:
+#         if self.is_authenticated(request):
+#             return self.function(request)
+#         return redirect(self.url_name)
+
+#     def is_authenticated(self,request):
+#         token = request['headers'].get('token')
+#         return token=='1234'
+
+# @AuthenticateRequierd
+# class API:
+#     def __init__(self,request) -> None:
+#         self.request = request
+
+#     def call(self):
+#         return 'OK'
+
+# @AuthenticateRequierd
+# def show_hello(request):
+#     return HttpResponse('Hello World')
+
+# request = {'headers':{'token':"1234"}}
+# api = show_hello(request)
+# result = API.call()
+# print(result)
+
+# def set_token(request):
+#     request.META['TOKEN'] = '1234'
+#     return HttpResponse()
+
+
 class LikeView(View):
     # login_url = reverse_lazy('users:login')
 
