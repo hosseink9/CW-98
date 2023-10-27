@@ -1,0 +1,29 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#9de9c1",
+        "activityBar.background": "#9de9c1",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#ad7de2",
+        "activityBarBadge.foreground": "#15202b",
+        "commandCenter.border": "#15202b99",
+        "sash.hoverBorder": "#9de9c1",
+        "statusBar.background": "#73e0a6",
+        "statusBar.foreground": "#15202b",
+        "statusBarItem.hoverBackground": "#49d78b",
+        "statusBarItem.remoteBackground": "#73e0a6",
+        "statusBarItem.remoteForeground": "#15202b",
+        "titleBar.activeBackground": "#73e0a6",
+        "titleBar.activeForeground": "#15202b",
+        "titleBar.inactiveBackground": "#73e0a699",
+        "titleBar.inactiveForeground": "#15202b99"
+    },
+    "peacock.color": "#73e0a6",
+    "cSpell.words": [
+        "fastapi",
+        "jsonable",
+        "passlib",
+        "pydantic",
+        "pymongo"
+    ]
+}
